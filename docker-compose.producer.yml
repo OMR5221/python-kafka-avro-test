@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  producer:
+    build: ./producer
+    container_name: producer
+    ports:
+      - 9092
+      - 8081
+    environment:
+      KAFKA_BROKER_URL: 'broker:9092'
+      SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
+      TRANSACTIONS_TOPIC: 'create-user-request'
+      TRANSACTIONS_PER_SECOND: 1000
+
+networks:
+  default:
+    external:
+      name: kafka-network

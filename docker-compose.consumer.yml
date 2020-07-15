@@ -5,14 +5,10 @@ services:
   consumer:
     build: ./consumer
     container_name: consumer
+    network_mode: "host"
     environment:
-      KAFKA_BROKER_URL: 'broker:9092'
-      SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
+      KAFKA_BROKER_URL: 'localhost:9092'
+      SCHEMA_REGISTRY_URL: 'http://localhost:8081'
       TRANSACTIONS_TOPIC: 'create-user-request'
       LEGIT_TOPIC: 'streaming.transactions.legit'
       FRAUD_TOPIC: 'streaming.transactions.fraud'
-
-networks:
-  default:
-    external:
-      name: kafka-network

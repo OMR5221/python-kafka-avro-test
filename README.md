@@ -24,10 +24,21 @@ $ docker-compose -f docker-compose.consumer.yml up -d
 
 ## Teardown
 
-Stop the containers:
+- Stop the containers:
 
 ```bash
 $ docker-compose -f docker-compose.consumer.yml down
 $ docker-compose -f docker-compose.producer.yml down
 $ docker-compose -f docker-compose.kafka.yml down
 ```
+
+- Remove images (Not associated to a container):
+``bash
+$ docker image prune -a
+```
+
+- Remove volume (not associated to a container):
+``bash
+$ docker volume prune
+```
+
